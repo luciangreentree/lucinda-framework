@@ -1,4 +1,6 @@
 <?php
+require __DIR__ . '/vendor/autoload.php';
+
 // performs environment detection
 $environment = getenv("ENVIRONMENT");
 if (!$environment) {
@@ -7,10 +9,18 @@ if (!$environment) {
 define("ENVIRONMENT", $environment);
 
 // takes control of STDERR
-require("vendor/lucinda/errors-mvc/src/FrontController.php");
 require("application/models/EmergencyHandler.php");
-new Lucinda\MVC\STDERR\FrontController("stderr.xml", ENVIRONMENT, __DIR__, new EmergencyHandler());
+new Lucinda\STDERR\FrontController("stderr.xml", ENVIRONMENT, __DIR__, new EmergencyHandler());
 
 // takes control of STDOUT
-require("vendor/lucinda/mvc/loader.php");
-new Lucinda\MVC\STDOUT\FrontController("stdout.xml");
+$object = new Lucinda\STDOUT\FrontController("stdout.xml", new Lucinda\Framework\Attributes(__DIR__."/application/listeners"));
+// $object->addEventListener(Lucinda\STDOUT\EventType::APPLICATION, "LoggingListener");
+// $object->addEventListener(Lucinda\STDOUT\EventType::APPLICATION, "SQLDataSourceInjector");
+// $object->addEventListener(Lucinda\STDOUT\EventType::APPLICATION, "NoSQLDataSourceInjector");
+// $object->addEventListener(Lucinda\STDOUT\EventType::REQUEST, "ErrorListener");
+// $object->addEventListener(Lucinda\STDOUT\EventType::REQUEST, "SecurityListener");
+// $object->addEventListener(Lucinda\STDOUT\EventType::REQUEST, "HttpHeadersListener");
+// $object->addEventListener(Lucinda\STDOUT\EventType::REQUEST, "HttpCorsListener");
+// $object->addEventListener(Lucinda\STDOUT\EventType::REQUEST, "LocalizationListener");
+// $object->addEventListener(Lucinda\STDOUT\EventType::RESPONSE, "HttpCachingListener");
+$object->run();

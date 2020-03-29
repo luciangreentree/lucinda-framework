@@ -1,19 +1,23 @@
 <?php
-require("vendor/lucinda/framework-engine/src/internationalization/LocalizationBinder.php");
-require("application/models/internationalization/Translate.php");
+require("application/models/Translate.php");
 
 /**
- * Binds STDOUT MVC with Internationalization API and contents of 'internationalization' tag @ configuration.xml
- * in order to be able to render a view according to client locale.
+ * Sets up Internationalization API to use in automatic translation of response
  */
-class LocalizationListener extends \Lucinda\MVC\STDOUT\RequestListener
+class LocalizationListener extends \Lucinda\STDOUT\EventListeners\Request
 {
     /**
-     * {@inheritDoc}
-     * @see \Lucinda\MVC\STDOUT\Runnable::run()
+     * @var \Lucinda\Framework\Attributes
      */
-    public function run()
+    protected $attributes;
+    
+    /**
+     * {@inheritDoc}
+     * @see \Lucinda\STDOUT\Runnable::run()
+     */
+    public function run(): void
     {
-        new Lucinda\Framework\LocalizationBinder($this->application, $this->request);
+        $wrapper = new Lucinda\Internationalization\Wrapper($this->application->getTag("xml"), $this->request->parameters(), $this->request->headers());
+        \Lucinda\Framework\SingletonRepository::set("translations", $wrapper->getReader());
     }
 }
