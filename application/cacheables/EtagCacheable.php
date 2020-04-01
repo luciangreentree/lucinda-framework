@@ -8,7 +8,7 @@ class EtagCacheable extends \Lucinda\Framework\AbstractCacheable
      * {@inheritDoc}
      * @see \Lucinda\Framework\AbstractCacheable::setTime()
      */
-    protected function setTime()
+    protected function setTime(): void
     {
     }
     
@@ -16,7 +16,7 @@ class EtagCacheable extends \Lucinda\Framework\AbstractCacheable
      * {@inheritDoc}
      * @see \Lucinda\Framework\AbstractCacheable::setEtag()
      */
-    protected function setEtag()
+    protected function setEtag(): void
     {
         $this->etag = sha1($this->request->getServer()->getName()."#".$this->response->getBody());
     }

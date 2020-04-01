@@ -1,6 +1,4 @@
 <?php
-require_once("vendor/lucinda/framework-configurer/src/CommandRunner.php");
-
 ini_set("display_errors", 1);
 error_reporting(E_ALL);
 try {

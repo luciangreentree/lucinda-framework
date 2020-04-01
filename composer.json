@@ -13,7 +13,8 @@
         }
     ],
     "require": {
-        "ext-simplexml": "*",           	
+        "ext-simplexml": "*",    
+        "lucinda/framework-engine": "~2.0",       	
         "lucinda/logging": "~3.0",
         "lucinda/nosql-data-access": "~3.0",
         "lucinda/oauth2-client": "~2.0",
