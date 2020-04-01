@@ -13,7 +13,7 @@ class FileReporter extends \Lucinda\Framework\AbstractReporter
      */
     public function getLogger(): Logger
     {
-        $rootFolder = dirname(dirname(__DIR__));      
+        $rootFolder = dirname(dirname(__DIR__));
         $filePath = $rootFolder."/".$this->xml["path"];
         if (!$filePath) {
             throw new Lucinda\STDERR\Exception("Attribute 'path' is mandatory for 'file' tag");

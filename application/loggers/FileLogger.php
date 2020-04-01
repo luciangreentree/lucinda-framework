@@ -12,7 +12,7 @@ class FileLogger extends \Lucinda\Logging\AbstractLoggerWrapper
      * @see \Lucinda\Logging\AbstractLoggerWrapper::setLogger()
      */
     protected function setLogger(SimpleXMLElement $xml): Logger
-    {        
+    {
         $filePath = (string) $xml["path"];
         if (!$filePath) {
             throw new Lucinda\STDOUT\XMLException("Attribute 'path' is mandatory for 'file' tag");

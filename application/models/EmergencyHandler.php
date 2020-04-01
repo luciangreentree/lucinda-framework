@@ -36,21 +36,21 @@ class EmergencyHandler implements \Lucinda\STDERR\ErrorHandler
             }
             $response->setBody($contents);
             $response->commit();
-        } else if ($defaultFormat == "json") {
+        } elseif ($defaultFormat == "json") {
             $body = [];
             if ($displayErrors) {
                 $body = [
-                    get_class($exception),
-                    $exception->getMessage(),
-                    $exception->getFile(),
-                    $exception->getLine(),
-                    $exception->getTraceAsString()
+                    "class"=>get_class($exception),
+                    "message"=>$exception->getMessage(),
+                    "file"=>$exception->getFile(),
+                    "line"=>$exception->getLine(),
+                    "trace"=>$exception->getTraceAsString()
                 ];
             }
             $response = new \Lucinda\STDERR\Response("application/json", "");
             $response->setBody(json_encode(["status"=>"error", "body"=>$body]));
             $response->setStatus(500);
-            $response->commit();            
+            $response->commit();
         } else {
             die("Format not supported: ".$defaultFormat);
         }

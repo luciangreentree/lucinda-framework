@@ -3,8 +3,6 @@ use Lucinda\STDERR\Controller;
 
 /**
  * STDERR MVC controller running whenever a Lucinda\Framework\SecurityPacket is thrown during STDOUT phase.
- * Class is open for modification if, for example, developers want to simply redirect to callback page when HTML response format is required
- * instead of showing 401/403/404 views.
  */
 class SecurityPacketController extends Controller
 {
@@ -64,9 +62,9 @@ class SecurityPacketController extends Controller
             if ($this->redirect) {
                 if ($status == "unauthorized") {
                     $location .= "&source=".urlencode($_SERVER["REQUEST_URI"]);
-                } else if ($status == "login_ok" && !empty($_GET["source"])) {
+                } elseif ($status == "login_ok" && !empty($_GET["source"])) {
                     $location = $_GET["source"];
-                } else if ($penalty = $this->request->getException()->getTimePenalty()) {
+                } elseif ($penalty = $this->request->getException()->getTimePenalty()) {
                     $location .= "&wait=".$penalty;
                 }
                 $this->response::redirect($location);

@@ -1,6 +1,4 @@
 <?php
-require("AbstractLoginThrottler.php");
-
 use Lucinda\WebSecurity\Request;
 
 /**
@@ -13,7 +11,7 @@ class NoSqlLoginThrottler extends \Lucinda\Framework\AbstractLoginThrottler
    
     /**
      * Registers variables, calculates key to search for, and checks current throttling status for request.
-     * 
+     *
      * @param \Lucinda\STDOUT\Request $request
      * @param string $ipAddress IP address detected from client.
      * @param string $userName Username client tries to login with.

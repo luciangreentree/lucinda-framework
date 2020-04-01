@@ -2,8 +2,7 @@
 use Lucinda\STDERR\Controller;
 
 /**
- * STDERR MVC controller that gets activated whenever an error occurs during application lifecycle.
- * Class is open for modification if developers want to use templating on response body or support formats other than html and json.
+ * STDERR MVC controller that gets activated whenever an non-routed error occurs during application lifecycle.
  */
 class ErrorsController extends Controller
 {
@@ -50,7 +49,7 @@ class ErrorsController extends Controller
         }
         if (strpos($contentType, "text/html")===0) {
             $view->setFile($this->application->getViewsPath()."/".($displayErrors?"debug":"500"));
-        } else if(strpos($contentType, "application/json")!==0) {
+        } elseif (strpos($contentType, "application/json")!==0) {
             throw new Exception("Unsupported content type!");
         }
     }

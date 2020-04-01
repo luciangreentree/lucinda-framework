@@ -23,12 +23,12 @@ class SecurityListener extends \Lucinda\STDOUT\EventListeners\Request
     public function run(): void
     {
         $requestBinder = new RequestBinder($this->request, $this->attributes->getValidPage(), true);
-        $xml = $this->application->getTag("xml");        
-        if($xml->oauth2) {
+        $xml = $this->application->getTag("xml");
+        if ($xml->oauth2) {
             $oauth2Wrapper = new Lucinda\OAuth2\Wrapper($xml, ENVIRONMENT);
             $oauth2Drivers = $oauth2Wrapper->getDriver();
             
-            $oauth2Binder = new OAuth2Binder($oauth2Drivers);            
+            $oauth2Binder = new OAuth2Binder($oauth2Drivers);
             $securityWrapper = new Lucinda\WebSecurity\Wrapper($xml, $requestBinder->getResult(), $oauth2Binder->getResults());
             $this->attributes->setUserId($securityWrapper->getUserID());
             $this->attributes->setCsrfToken($securityWrapper->getCsrfToken());
@@ -42,6 +42,6 @@ class SecurityListener extends \Lucinda\STDOUT\EventListeners\Request
             $this->attributes->setUserId($securityWrapper->getUserID());
             $this->attributes->setCsrfToken($securityWrapper->getCsrfToken());
             $this->attributes->setAccessToken($securityWrapper->getAccessToken());
-        }        
+        }
     }
 }

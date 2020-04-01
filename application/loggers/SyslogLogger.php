@@ -12,7 +12,7 @@ class SyslogLogger extends \Lucinda\Logging\AbstractLoggerWrapper
      * @see \Lucinda\Logging\AbstractLoggerWrapper::setLogger()
      */
     protected function setLogger(SimpleXMLElement $xml): Logger
-    {       
+    {
         $applicationName = (string) $xml["application"];
         if (!$applicationName) {
             throw new Lucinda\STDOUT\XMLException("Attribute 'path' is mandatory for 'syslog' tag");

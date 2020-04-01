@@ -3,7 +3,7 @@ use Lucinda\Framework\SingletonRepository;
 
 /**
  * Gets remote resource from current OAuth2 driver
- * 
+ *
  * @param string $url
  * @param array $fields
  * @return array

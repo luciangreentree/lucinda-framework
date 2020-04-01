@@ -20,7 +20,7 @@ class HttpCorsListener extends \Lucinda\STDOUT\EventListeners\Request
         $validator = $this->attributes->getHeaders();
         if ($validator===null || $this->request->getMethod()!="OPTIONS") {
             return;
-        }      
+        }
         
         // perform CORS validation
         $validator->validateCors($this->request->getServer()->getName());
@@ -28,11 +28,10 @@ class HttpCorsListener extends \Lucinda\STDOUT\EventListeners\Request
         // send response immediately
         $response = new Response("application/json", "");
         $headers = $validator->getResponse()->toArray();
-        foreach($headers as $name=>$value) {
+        foreach ($headers as $name=>$value) {
             $response->headers($name, $value);
-        } 
+        }
         $response->commit();
         exit();
     }
 }
-

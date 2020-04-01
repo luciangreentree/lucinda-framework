@@ -1,8 +1,6 @@
 <?php
-require("AbstractLoginThrottler.php");
-
 /**
- * Extension of BasicLoginThrottler that uses an SQL database as storage medium 
+ * Extension of BasicLoginThrottler that uses an SQL database as storage medium
  */
 class SqlLoginThrottler extends \Lucinda\Framework\AbstractLoginThrottler
 {
@@ -48,4 +46,3 @@ class SqlLoginThrottler extends \Lucinda\Framework\AbstractLoginThrottler
         }
     }
 }
-
