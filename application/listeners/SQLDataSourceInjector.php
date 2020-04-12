@@ -12,6 +12,6 @@ class SQLDataSourceInjector extends \Lucinda\STDOUT\EventListeners\Application
      */
     public function run(): void
     {
-        new Lucinda\SQL\Wrapper($this->application->getTag("xml"), ENVIRONMENT);
+        new Lucinda\SQL\Wrapper($this->application->getXML(), ENVIRONMENT);
     }
 }

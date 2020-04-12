@@ -15,7 +15,7 @@ class LoggingListener extends \Lucinda\STDOUT\EventListeners\Application
      */
     public function run(): void
     {
-        $wrapper = new Lucinda\Logging\Wrapper($this->application->getTag("xml"), ENVIRONMENT);
+        $wrapper = new Lucinda\Logging\Wrapper($this->application->getXML(), ENVIRONMENT);
         $this->attributes->setLogger($wrapper->getLogger());
     }
 }
