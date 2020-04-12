@@ -13,6 +13,7 @@
         }
     ],
     "require": {
+        "php": "^7.1",
         "ext-simplexml": "*",    
         "lucinda/framework-engine": "~2.0",       	
         "lucinda/logging": "~3.0",
