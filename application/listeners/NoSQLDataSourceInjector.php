@@ -10,6 +10,6 @@ class NoSQLDataSourceInjector extends \Lucinda\STDOUT\EventListeners\Application
      */
     public function run(): void
     {
-        new Lucinda\NoSQL\Wrapper($this->application->getTag("xml"), ENVIRONMENT);
+        new Lucinda\NoSQL\Wrapper($this->application->getXML(), ENVIRONMENT);
     }
 }

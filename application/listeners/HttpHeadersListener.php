@@ -15,7 +15,7 @@ class HttpHeadersListener extends \Lucinda\STDOUT\EventListeners\Request
      */
     public function run(): void
     {
-        $wrapper = new Lucinda\Headers\Wrapper($this->application->getTag("xml"), $this->attributes->getValidPage(), $this->request->headers());
+        $wrapper = new Lucinda\Headers\Wrapper($this->application->getXML(), $this->attributes->getValidPage(), $this->request->headers());
         $this->attributes->setHeaders($wrapper);
     }
 }

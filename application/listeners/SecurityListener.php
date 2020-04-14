@@ -23,7 +23,7 @@ class SecurityListener extends \Lucinda\STDOUT\EventListeners\Request
     public function run(): void
     {
         $requestBinder = new RequestBinder($this->request, $this->attributes->getValidPage(), true);
-        $xml = $this->application->getTag("xml");
+        $xml = $this->application->getXML();
         if ($xml->oauth2->{ENVIRONMENT}) {
             $oauth2Wrapper = new Lucinda\OAuth2\Wrapper($xml, ENVIRONMENT);
             $oauth2Drivers = $oauth2Wrapper->getDriver();
