@@ -12,5 +12,16 @@
     <resolver format="json" content_type="application/json" class="JsonRenderer" charset="UTF-8"/>
   </resolvers>
   <templating compilations_path="compilations" tags_path="application/tags" templates_path="application/views" templates_extension="html"/>
-  <exceptions controller="ErrorsController" error_type="LOGICAL" http_status="500"/>
+  <exceptions controller="ErrorsController" error_type="LOGICAL" http_status="500">
+    <exception class="Lucinda\STDERR\ConfigurationException" error_type="LOGICAL" controller="ErrorsController" http_status="500"/>
+    <exception class="Lucinda\STDERR\PHPException" error_type="SYNTAX" controller="ErrorsController" http_status="500"/>
+    <exception class="Lucinda\Framework\Json\Exception" error_type="SYNTAX" controller="ErrorsController" http_status="500"/>
+    <exception class="Lucinda\STDOUT\ConfigurationException" error_type="LOGICAL" controller="ErrorsController" http_status="500"/>
+    <exception class="Lucinda\STDOUT\MethodNotAllowedException" error_type="CLIENT" view="405" http_status="405"/>
+    <exception class="Lucinda\STDOUT\PathNotFoundException" error_type="CLIENT" view="404" http_status="404"/>
+    <exception class="Lucinda\STDOUT\Request\UploadedFiles\Exception" error_type="CLIENT" controller="ErrorsController" http_status="500"/>
+    <exception class="Lucinda\STDOUT\ValidationFailedException" error_type="CLIENT" view="400" http_status="400"/>
+    <exception class="Lucinda\Templating\ConfigurationException" error_type="LOGICAL" controller="ErrorsController" http_status="500"/>
+    <exception class="Lucinda\Templating\ViewException" error_type="SYNTAX" controller="ErrorsController" http_status="500"/>
+  </exceptions>
 </xml>
