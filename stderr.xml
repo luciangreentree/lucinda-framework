@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xml>
+<xml>
+  <application version="0.0.1" default_format="html">
+    <paths controllers="application/controllers" resolvers="application/renderers" reporters="application/reporters" views="application/views"/>
+    <display_errors>
+      <local>1</local>
+    </display_errors>
+  </application>
+  <resolvers>
+    <resolver format="html" content_type="text/html" class="HtmlRenderer" charset="UTF-8"/>
+    <resolver format="json" content_type="application/json" class="JsonRenderer" charset="UTF-8"/>
+  </resolvers>
+  <templating compilations_path="compilations" tags_path="application/tags" templates_path="application/views" templates_extension="html"/>
+  <exceptions controller="ErrorsController" error_type="LOGICAL" http_status="500"/>
+</xml>

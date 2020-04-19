@@ -5,7 +5,7 @@
 class LoggingListener extends \Lucinda\STDOUT\EventListeners\Application
 {
     /**
-     * @var \Lucinda\Framework\Attributes
+     * @var Attributes
      */
     protected $attributes;
     

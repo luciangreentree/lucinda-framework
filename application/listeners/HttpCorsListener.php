@@ -7,7 +7,7 @@ use Lucinda\STDOUT\Response;
 class HttpCorsListener extends \Lucinda\STDOUT\EventListeners\Request
 {
     /**
-     * @var \Lucinda\Framework\Attributes
+     * @var Attributes
      */
     protected $attributes;
     

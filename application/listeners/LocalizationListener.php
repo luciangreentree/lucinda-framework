@@ -7,7 +7,7 @@ require("application/models/translate.php");
 class LocalizationListener extends \Lucinda\STDOUT\EventListeners\Request
 {
     /**
-     * @var \Lucinda\Framework\Attributes
+     * @var Attributes
      */
     protected $attributes;
     

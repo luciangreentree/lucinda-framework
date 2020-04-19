@@ -7,7 +7,7 @@ use Lucinda\Framework\CacheableFinder;
 class HttpCachingListener extends Lucinda\STDOUT\EventListeners\Response
 {
     /**
-     * @var \Lucinda\Framework\Attributes
+     * @var Attributes
      */
     protected $attributes;
     

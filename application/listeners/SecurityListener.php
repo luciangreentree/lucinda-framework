@@ -12,7 +12,7 @@ use Lucinda\Framework\SingletonRepository;
 class SecurityListener extends \Lucinda\STDOUT\EventListeners\Request
 {
     /**
-     * @var \Lucinda\Framework\Attributes
+     * @var Attributes
      */
     protected $attributes;
     
