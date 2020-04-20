@@ -13,7 +13,7 @@ class EmergencyHandler implements \Lucinda\STDERR\ErrorHandler
     {
         $xml = simplexml_load_file(dirname(dirname(__DIR__))."/stderr.xml");
         $displayErrors = (string) $xml->application->display_errors->{ENVIRONMENT};
-        $defaultFormat = (string) $xml->application->default_format;
+        $defaultFormat = (string) $xml->application["default_format"];
         
         if ($defaultFormat=="html") {
             $response = new \Lucinda\STDERR\Response("text/html", dirname(__DIR__)."/views/".($displayErrors?"debug":"500").".html");

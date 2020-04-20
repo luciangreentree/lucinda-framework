@@ -15,4 +15,5 @@ new Lucinda\STDERR\FrontController("stderr.xml", ENVIRONMENT, __DIR__, new Emerg
 // takes control of STDOUT
 require("application/models/Attributes.php");
 $object = new Lucinda\STDOUT\FrontController("stdout.xml", new Attributes(__DIR__."/application/listeners"));
+$object->addEventListener(Lucinda\STDOUT\EventType::REQUEST, "ErrorListener");
 $object->run();
